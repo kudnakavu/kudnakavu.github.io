@@ -43,11 +43,7 @@ var DataControl = function(){
 		}else{
 			user = "";
 		}
-		
-		if(mainDS.UsersTable.length > 0){
-			user = mainDS.UsersTable[0].Login;
-		}
-		
+				
 		return $.grep(mainDS.UsersTable, function(x) { return x.Login == user}).length > 0;
 	};
 	
@@ -60,11 +56,7 @@ var DataControl = function(){
 		}else{
 			user = "";
 		}
-		
-		if(mainDS.UsersTable.length > 0){
-			user = mainDS.UsersTable[0].Login;
-		}
-		
+				
 		return $.grep(mainDS.UsersTable, function(x) { return x.Login == user}).length > 0 ? $.grep(mainDS.UsersTable, function(x) { return x.Login == user})[0] : null;
 	};
 	
