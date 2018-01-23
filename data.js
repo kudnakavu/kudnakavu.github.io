@@ -43,7 +43,11 @@ var DataControl = function(){
 		}else{
 			user = "";
 		}
-				
+		
+		if(mainDS.UsersTable.length > 0){
+			user = mainDS.UsersTable[0].Login;
+		}
+		
 		return $.grep(mainDS.UsersTable, function(x) { return x.Login == user}).length > 0;
 	};
 	
@@ -56,7 +60,11 @@ var DataControl = function(){
 		}else{
 			user = "";
 		}
-			
+		
+		if(mainDS.UsersTable.length > 0){
+			user = mainDS.UsersTable[0].Login;
+		}
+		
 		return $.grep(mainDS.UsersTable, function(x) { return x.Login == user}).length > 0 ? $.grep(mainDS.UsersTable, function(x) { return x.Login == user})[0] : null;
 	};
 	
@@ -75,6 +83,22 @@ var DataControl = function(){
 			return null;
 		}
 	};
+	
+	this.GetFacilitiesForUser = function(login){
+		if($.grep(mainDS.FacilityTable, function(x) { return x.Owner == login; }).length > 0){
+			return $.grep(mainDS.FacilityTable, function(x) { return x.Owner == login; });
+		}else{
+			return null;
+		}
+	}
+	
+	this.GetFacilityForUser = function(login, id){
+		if($.grep(mainDS.FacilityTable, function(x) { return x.Owner == login && x.ID == id; }).length > 0){
+			return $.grep(mainDS.FacilityTable, function(x) { return x.Owner == login && x.ID == id; })[0];
+		}else{
+			return null;
+		}
+	}
 	
 	this.RegisterFacility = function(facility){
 		mainDS.FacilityTable.push(facility);

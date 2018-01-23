@@ -9,6 +9,7 @@ function ShowUserProfile(){
 function getUserProfile(){
 	var retVal = "";
 	var user = mainProg.Datacontrol.GetLoggedInUser();
+	var facs = mainProg.Datacontrol.GetFacilitiesForUser(user.Login);
 	
 	retVal += '<div class="row" style="margin-top: 15px;">';
 	
@@ -21,30 +22,54 @@ function getUserProfile(){
 	
 	retVal += '<div class="col-lg-9">';
 	
-	retVal += '<div class="form-group">';
-	retVal += '<label for="profile_firstname">Ime:</label>';
+	retVal += '<div class="form-group row">';
+	retVal += '<label for="profile_firstname" class="col-sm-2 col-form-label">Ime:</label>';
+	retVal += '<div class="col-sm-10">';
 	retVal += '<input id="profile_firstname" type="text" class="form-control" value="' + user.Name + '">';
 	retVal += '</div>';
-	retVal += '<div class="form-group">';
-	retVal += '<label for="profile_lastname">Prezime:</label>';
+	retVal += '</div>';
+	retVal += '<div class="form-group row">';
+	retVal += '<label for="profile_lastname" class="col-sm-2 col-form-label">Prezime:</label>';
+	retVal += '<div class="col-sm-10">';
 	retVal += '<input id="profile_lastname" type="text" class="form-control" value="' + user.LastName + '">';
 	retVal += '</div>';
-	retVal += '<div class="form-group">';
-	retVal += '<label for="profile_password">Lozinka:</label>';
+	retVal += '</div>';
+	retVal += '<div class="form-group row">';
+	retVal += '<label for="profile_password" class="col-sm-2 col-form-label">Lozinka:</label>';
+	retVal += '<div class="col-sm-10">';
 	retVal += '<input id="profile_password" type="text" class="form-control">';
 	retVal += '</div>';
-	retVal += '<div class="form-group">';
-	retVal += '<label for="profile_confirmpass">Potvrda lozinke:</label>';
+	retVal += '</div>';
+	retVal += '<div class="form-group row">';
+	retVal += '<label for="profile_confirmpass" class="col-sm-2 col-form-label">Potvrda lozinke:</label>';
+	retVal += '<div class="col-sm-10">';
 	retVal += '<input id="profile_confirmpass" type="text" class="form-control">';
+	retVal += '</div>';
 	retVal += '</div>';
 	retVal += '<button type="button" class="btn btn-secondary" onclick="SaveProfile();" style="margin-right: 15px;">Spremi</button>';
 	
 	retVal += '</div>';
-	retVal += '';
-	retVal += '';
-	retVal += '';
 	
 	retVal += '</div>';
+		
+	if(facs != null){
+		for(var i = 0; i < facs.length; i++){
+			retVal += '<hr />';
+	
+			retVal += '<div class="row" style="margin-top: 15px; cursor: pointer;" onclick="mainProg.GoToPage(\'profil objekta\', \'' + facs[i].ID + '\');">';
+			
+			retVal += '<div class="col-lg-3">';
+			retVal += '<img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">';
+			retVal += '<h5>' + facs[i].Name + '</h5>';
+			retVal += '</div>';
+			
+			retVal += '<div class="col-lg-9">';
+			retVal += '<p>' + facs[i].Description + ' </p>';
+			retVal += '</div>';
+			
+			retVal += '</div>';
+		}
+	}
 	
 	return retVal;
 }

@@ -20,7 +20,7 @@ function getDetailsHtml(facility){
 	retVal += '</div>';
 	retVal += '<div class="card-block">';
 	retVal += '<div class="text-center">';
-	retVal += '<img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">';
+	retVal += '<img class="img-fluid rounded" src="http://placehold.it/900x300" alt="" style="width: 100%;">';
 	retVal += '</div>';
 
 	retVal += '<hr>';
@@ -50,7 +50,7 @@ function getDetailUserOptionsHtml(datacontrol){
 		retVal += '<button type="button" class="btn btn-secondary btn-sm" onclick="detailsHideComment();" style="margin: 0px 5px 5px 0px;">Odustani</button>';
 		retVal += '<button type="button" class="btn btn-secondary btn-sm" onclick="detailsSaveComment();" style="margin: 0px 5px 5px 0px;">Pošalji</button>';
 		retVal += '</div>';
-		retVal += '<textarea id="commentText" row="10" style="width: 100%;"></textarea>';
+		retVal += '<textarea class="form-control" id="commentText" rows="10" style="width: 100%;"></textarea>';
 		retVal += '</div>';
 		
 		retVal += '</div>';

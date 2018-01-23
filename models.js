@@ -17,6 +17,7 @@ var FacilityModel = function(){
 	this.OIB = "";
 	this.Tags = [];
 	this.GaleryID = null;
+	this.Owner = "";
 };
 
 var PostModel = function(){
